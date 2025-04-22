@@ -1,6 +1,4 @@
 flask
 pandas
-openai
-python-dotenv
 gunicorn
 openpyxl

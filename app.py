@@ -96,3 +96,6 @@ def analyze_dataframe(df):
 
 if __name__ == '__main__':
     app.run(debug=True)
+# 🔁 Render 배포 테스트용 수정
+# ✅ Render 강제 재배포용 주석
+# 🚀 Render 배포 트리거용 변경

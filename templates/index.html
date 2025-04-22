@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>📦 엑셀 발주서 분석기</title>
+</head>
+<body>
+    <h1>📥 엑셀 파일 업로드</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">분석하기</button>
+    </form>
+
+    {% if result %}
+    <hr>
+    <h2>📊 분석 결과</h2>
+    <ul>
+        <li>발주 종 수: {{ result["종수"] }}종</li>
+        <li>발주 부 수: {{ result["부수"] }}부</li>
+        <li>총 흑백 페이지: {{ result["흑백페이지수"] }}페이지 (⏱ {{ result["흑백인쇄시간"] }})</li>
+        <li>총 칼라 페이지: {{ result["칼라페이지수"] }}페이지 (⏱ {{ result["칼라인쇄시간"] }})</li>
+        <li>제본 예상 시간: ⏱ {{ result["제본시간"] }}</li>
+        <li>유광 코팅 시간: ⏱ {{ result["유광코팅시간"] }}</li>
+        <li>무광 코팅 시간: ⏱ {{ result["무광코팅시간"] }}</li>
+        <li>📁 파일 수: 표지 {{ result["표지수"] }}개 + 내지 {{ result["내지수"] }}개 = 총 {{ result["총합"] }}개</li>
+    </ul>
+
+    <h3>📂 폴더별 내지 파일 개수</h3>
+    <ul>
+        {% for folder, count in result["폴더별"].items() %}
+        <li>{{ folder }}: {{ count }}개</li>
+        {% endfor %}
+    </ul>
+
+    <h3>🕐 1시간 이상 흑백 인쇄 도서</h3>
+    <ul>
+        {% for name, file, pages, time in result["1시간흑백"] %}
+        <li>{{ name }} ({{ file }}) - {{ pages }}페이지 (⏱ {{ time }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>🕐 1시간 이상 칼라 인쇄 도서</h3>
+    <ul>
+        {% for name, file, pages, time in result["1시간칼라"] %}
+        <li>{{ name }} ({{ file }}) - {{ pages }}페이지 (⏱ {{ time }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

@@ -26,29 +26,25 @@
     </ul>
 
     <h2>📂 폴더별 내지 파일 개수</h2>
-    <div style="display: flex; gap: 40px; justify-content: flex-start; align-items: flex-start;">
-      <!-- 왼쪽: 컬러 -->
-      <div>
-        <h3>🎨 컬러</h3>
-        <ul>
-          {% for folder in ["컬날46", "컬날A5", "컬날B5", "컬단46", "컬단A4", "컬단A5", "컬단B5"] %}
-            {% if folder in result.폴더별 %}
-              <li>{{ folder }}: {{ result.폴더별[folder] }}개</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    
-      <!-- 오른쪽: 흑백 -->
-      <div>
-        <h3>🖤 흑백</h3>
-        <ul>
-          {% for folder in ["흑날46", "흑날A5", "흑날B5", "흑단46", "흑단A4", "흑단A5", "흑단B5"] %}
-            {% if folder in result.폴더별 %}
-              <li>{{ folder }}: {{ result.폴더별[folder] }}개</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-    
+<div style="display: flex; gap: 40px;">
+  <div>
+    <h3>🎨 컬러</h3>
+    <ul>
+      {% for folder in ["컬날46", "컬날A5", "컬날B5", "컬단46", "컬단A4", "컬단A5", "컬단B5"] %}
+        {% if folder in result.폴더별 %}
+          <li>{{ folder }}: {{ result.폴더별[folder] }}개</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <h3>🖤 흑백</h3>
+    <ul>
+      {% for folder in ["흑날46", "흑날A5", "흑날B5", "흑단46", "흑단A4", "흑단A5", "흑단B5"] %}
+        {% if folder in result.폴더별 %}
+          <li>{{ folder }}: {{ result.폴더별[folder] }}개</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

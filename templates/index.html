@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>📦 엑셀 발주서 분석기</title>
@@ -26,9 +26,9 @@
     </ul>
 
     <h2>📂 폴더별 내지 파일 개수</h2>
-    <div style="display: flex; justify-content: center; gap: 40px;">
+    <div style="display: flex; justify-content: flex-start; gap: 60px; align-items: flex-start;">
         <div>
-            <h3>🎨 컬러</h3>
+            <h3>🥲 컬러</h3>
             <ul>
                 {% for folder in ['컬/46_날', '컬/A5_날', '컬/B5_날', '컬/46_단', '컬/A4_단', '컬/A5_단', '컬/B5_단'] %}
                     {% if result.폴더별.get(folder) %}
@@ -49,22 +49,22 @@
         </div>
     </div>
 
-    {% if result['1시간흑백'] %}
-        <h3>🕐 1시간 이상 흑백 인쇄 도서</h3>
-        <ul>
-            {% for 도서명, 파일명, 페이지수, 시간 in result['1시간흑백'] %}
-                <li>{{ 도서명 }} ({{ 파일명 }}) - {{ 페이지수 }}페이지 (⏱ {{ 시간 }})</li>
-            {% endfor %}
-        </ul>
+    {% if result["1시간흑백"] %}
+    <h3>🕐 1시간 이상 흑백 인쇄 도서</h3>
+    <ul>
+        {% for 도서명, 파일명, 페이지수, 시간 in result["1시간흑백"] %}
+            <li>{{ 도서명 }} ({{ 파일명 }}) - {{ 페이지수 }}페이지 (⏱ {{ 시간 }})</li>
+        {% endfor %}
+    </ul>
     {% endif %}
 
-    {% if result['1시간칼라'] %}
-        <h3>🕐 1시간 이상 칼라 인쇄 도서</h3>
-        <ul>
-            {% for 도서명, 파일명, 페이지수, 시간 in result['1시간칼라'] %}
-                <li>{{ 도서명 }} ({{ 파일명 }}) - {{ 페이지수 }}페이지 (⏱ {{ 시간 }})</li>
-            {% endfor %}
-        </ul>
+    {% if result["1시간칼라"] %}
+    <h3>🕐 1시간 이상 칼라 인쇄 도서</h3>
+    <ul>
+        {% for 도서명, 파일명, 페이지수, 시간 in result["1시간칼라"] %}
+            <li>{{ 도서명 }} ({{ 파일명 }}) - {{ 페이지수 }}페이지 (⏱ {{ 시간 }})</li>
+        {% endfor %}
+    </ul>
     {% endif %}
     {% endif %}
 </body>
